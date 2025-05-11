@@ -1,66 +1,262 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GTABack - Serveur RP</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    body { background-color: #1a1a1a; color: white; font-family: sans-serif; }
-    header, footer { background-color: #111; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTABack - Serveur GTA RP</title>
+    <style>
+        /* -------------------- Global -------------------- */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-color: #1e1e1e;
+            color: #fff;
+        }
+
+        /* -------------------- Animation d'introduction -------------------- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #home {
+            animation: fadeIn 1s ease-in-out;
+            text-align: center;
+            padding: 100px 0;
+            background: url('https://example.com/gta-image.jpg') no-repeat center center/cover;
+        }
+
+        #home h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        #home p {
+            font-size: 1.5em;
+        }
+
+        /* -------------------- Navigation -------------------- */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #f1c40f;
+            color: black;
+            border-radius: 5px;
+        }
+
+        /* -------------------- Carrousel d'images -------------------- */
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 400px;
+        }
+
+        .carousel-image {
+            width: 100%;
+            object-fit: cover;
+            animation: slide 15s infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            33% {
+                transform: translateX(-100%);
+            }
+
+            66% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* -------------------- Formulaire d'inscription -------------------- */
+        section#inscription {
+            padding: 50px;
+            background-color: #333;
+            text-align: center;
+        }
+
+        form input,
+        form button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #f1c40f;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #d4af37;
+        }
+
+        #error-message {
+            color: red;
+        }
+
+        /* -------------------- Changement de couleur au scroll -------------------- */
+        header {
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* -------------------- Loader -------------------- */
+        #loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+        }
+
+        #loader img {
+            width: 100px;
+        }
+    </style>
 </head>
+
 <body>
-  <header class="p-4 text-center text-xl font-bold border-b border-gray-700">
-    GTABack - Serveur RP
-  </header>
+    <!-- Loader -->
+    <div id="loader">
+        <img src="https://example.com/loader.gif" alt="Chargement...">
+    </div>
 
-  <nav class="flex justify-center space-x-6 p-4 bg-gray-900 text-sm">
-    <a href="#accueil" class="hover:text-yellow-400">Accueil</a>
-    <a href="#reglement" class="hover:text-yellow-400">Règlement</a>
-    <a href="#rejoindre" class="hover:text-yellow-400">Nous Rejoindre</a>
-    <a href="#jobs" class="hover:text-yellow-400">Jobs & Groupes/a>
-  </nav>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#inscription">Inscription</a></li>
+                <li><a href="#regles">Règles</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#actualites">Actualités</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main class="p-6 max-w-4xl mx-auto">
-    <section id="accueil" class="mb-10">
-      <h2 class="text-2xl font-bold mb-2">Bienvenue sur GTABack</h2>
-      <p>GTABack est un serveur GTA RP francais qui vous plonge dans une expérience immersive dans un style US avec une communauté active et sérieuse.</p>
+    <!-- Section d'Accueil -->
+    <section id="home">
+        <h1>Bienvenue sur GTABack</h1>
+        <p>Venez vivre l'expérience GTA RP la plus immersive. Inscrivez-vous dès maintenant!</p>
+        <a href="#inscription" style="text-decoration: none; color: #f1c40f;">Inscription</a>
     </section>
 
-    <section id="reglement" class="mb-10">
-      <h2 class="text-2xl font-bold mb-2">Règlement du serveur</h2>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Respect entre joueurs obligatoire.</li>
-        <li>Pas de cheat, glitch ou exploitation de bugs.</li>
-        <li>Le RP est obligatoire en tout temps.</li>
-        <li>Les propos racistes, sexistes ou haineux sont interdits.</li>
-        <li>Suivre les instructions du staff.</li>
-      </ul>
+    <!-- Carrousel d'images -->
+    <div class="carousel">
+        <img src="https://example.com/gta1.jpg" alt="GTA RP 1" class="carousel-image">
+        <img src="https://example.com/gta2.jpg" alt="GTA RP 2" class="carousel-image">
+        <img src="https://example.com/gta3.jpg" alt="GTA RP 3" class="carousel-image">
+    </div>
+
+    <!-- Section Inscription -->
+    <section id="inscription">
+        <h2>Rejoindre GTABack</h2>
+        <form id="signupForm">
+            <label for="nom">Nom d'utilisateur:</label>
+            <input type="text" id="nom" name="nom" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Rejoindre</button>
+        </form>
+        <p id="error-message"></p>
     </section>
 
-    <section id="rejoindre" class="mb-10">
-      <h2 class="text-2xl font-bold mb-2">Comment nous rejoindre</h2>
-      <p>
-        Rejoignez-nous via notre <a href="https://discord.gg/gtaback" class="text-yellow-400 underline">Discord</a>.<br>
-        Se Connecter via le F8 : <strong>gtaback.fivem.net</strong>
-      </p>
+    <!-- Section Règles -->
+    <section id="regles" style="padding: 50px; text-align: center;">
+        <h2>Règles du Serveur</h2>
+        <ul>
+            <li>Respect des autres joueurs</li>
+            <li>Comportement RP réaliste</li>
+            <li>Aucune triche autorisée</li>
+        </ul>
     </section>
 
-    <section id="jobs" class="mb-10">
-      <h2 class="text-2xl font-bold mb-2">Jobs & Factions disponibles</h2>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Police nationale</li>
-        <li>EMS (secours)</li>
-        <li>Métiers légaux : chauffeur, livreur, bûcheron...</li>
-        <li>Entreprises créées par les joueurs</li>
-        <li>Organisations illégales (gangs, mafia, etc.)</li>
-      </ul>
+    <!-- Chat Discord -->
+    <section id="discord" style="text-align: center; padding: 50px;">
+        <h2>Rejoignez notre Discord</h2>
+        <iframe src="https://discord.com/widget?id=TON_ID_DISCORD&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
     </section>
-  </main>
 
-  <footer class="text-center p-4 border-t border-gray-700 text-sm">
-    &copy; 2025 GTABack - Tous droits réservés.
-  </footer>
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 20px; background-color: #333;">
+        <p>&copy; 2025 GTABack - Serveur GTA RP</p>
+    </footer>
+
+    <script>
+        // Loader (disparaît lorsque la page est chargée)
+        window.onload = function () {
+            document.getElementById('loader').style.display = 'none';
+        };
+
+        // Effet de changement de couleur au scroll
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Validation du formulaire d'inscription
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const errorMessage = document.getElementById('error-message');
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+            if (!emailPattern.test(email)) {
+                errorMessage.textContent = "Veuillez entrer un email valide!";
+            } else {
+                errorMessage.textContent = "";
+                alert("Inscription réussie!");
+            }
+        });
+    </script>
 </body>
+
 </html>
