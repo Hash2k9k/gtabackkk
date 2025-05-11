@@ -31,7 +31,9 @@
             animation: fadeIn 1s ease-in-out;
             text-align: center;
             padding: 100px 0;
-            background: url('https://example.com/gta-image.jpg') no-repeat center center/cover;
+            background: url('https://example.com/your-logo.gif') no-repeat center center/cover;
+            background-size: contain;
+            position: relative;
         }
 
         #home h1 {
@@ -102,36 +104,26 @@
             }
         }
 
-        /* -------------------- Formulaire d'inscription -------------------- */
-        section#inscription {
+        /* -------------------- Section Rejoindre le Serveur -------------------- */
+        section#rejoindre {
             padding: 50px;
             background-color: #333;
             text-align: center;
         }
 
-        form input,
-        form button {
-            padding: 10px;
-            margin: 10px 0;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 5px;
-            border: none;
-        }
-
         button {
+            padding: 15px 30px;
             background-color: #f1c40f;
             color: black;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
         button:hover {
             background-color: #d4af37;
-        }
-
-        #error-message {
-            color: red;
         }
 
         /* -------------------- Changement de couleur au scroll -------------------- */
@@ -170,7 +162,7 @@
         <nav>
             <ul>
                 <li><a href="#home">Accueil</a></li>
-                <li><a href="#inscription">Inscription</a></li>
+                <li><a href="#rejoindre">Rejoindre</a></li>
                 <li><a href="#regles">Règles</a></li>
                 <li><a href="#forum">Forum</a></li>
                 <li><a href="#actualites">Actualités</a></li>
@@ -181,8 +173,7 @@
     <!-- Section d'Accueil -->
     <section id="home">
         <h1>Bienvenue sur GTABack</h1>
-        <p>Venez vivre l'expérience GTA RP la plus immersive. Inscrivez-vous dès maintenant!</p>
-        <a href="#inscription" style="text-decoration: none; color: #f1c40f;">Inscription</a>
+        <p>Venez vivre l'expérience GTA RP la plus immersive. Rejoignez notre serveur FiveM maintenant!</p>
     </section>
 
     <!-- Carrousel d'images -->
@@ -192,17 +183,12 @@
         <img src="https://example.com/gta3.jpg" alt="GTA RP 3" class="carousel-image">
     </div>
 
-    <!-- Section Inscription -->
-    <section id="inscription">
-        <h2>Rejoindre GTABack</h2>
-        <form id="signupForm">
-            <label for="nom">Nom d'utilisateur:</label>
-            <input type="text" id="nom" name="nom" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <button type="submit">Rejoindre</button>
-        </form>
-        <p id="error-message"></p>
+    <!-- Section Rejoindre le Serveur -->
+    <section id="rejoindre">
+        <h2>Rejoindre notre Serveur FiveM</h2>
+        <p>Cliquez sur le bouton ci-dessous pour rejoindre notre serveur FiveM et commencer votre aventure GTA RP avec nous.</p>
+        <!-- Bouton de redirection vers le serveur FiveM -->
+        <button onclick="window.location.href='fivem://connect/votre_serveur_IP'">Rejoindre le Serveur</button>
     </section>
 
     <!-- Section Règles -->
@@ -239,21 +225,6 @@
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
-            }
-        });
-
-        // Validation du formulaire d'inscription
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const errorMessage = document.getElementById('error-message');
-            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-
-            if (!emailPattern.test(email)) {
-                errorMessage.textContent = "Veuillez entrer un email valide!";
-            } else {
-                errorMessage.textContent = "";
-                alert("Inscription réussie!");
             }
         });
     </script>
